@@ -32,6 +32,8 @@ public class Club implements Serializable {
     @OneToMany(mappedBy="clubId")
     private Set<ProductM> stockProductM=new HashSet<ProductM>();
     private Date fechaCreacion; 
+    @OneToMany(mappedBy="clubId")
+    private Set<User> partnersClub=new HashSet<User>();
 
     public Club(String nombre) {
         this.nombre = nombre;

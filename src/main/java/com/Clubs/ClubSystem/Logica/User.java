@@ -4,10 +4,27 @@
  */
 package com.Clubs.ClubSystem.Logica;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
 /**
  *
  * @author tomas
  */
-public class User {
+
+public abstract class User {
+
+    @ManyToOne
+    @JoinColumn(name = "Club_id", nullable = false)
+    protected Club clubId;
     
+    public User(Club club){
+        this.clubId=club;
+    }
+
 }
