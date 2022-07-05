@@ -6,6 +6,7 @@ package com.Clubs.ClubSystem.Controller;
 
 import com.Clubs.ClubSystem.Logica.ProductM;
 import com.Clubs.ClubSystem.Service.ProductService;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -23,28 +25,45 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/products")
 public class ProductMController {
-    
+
     @Autowired
     private ProductService productServicio;
-    
+
     @GetMapping
-    public List<ProductM> getProductsM(){
-        return productServicio.getProducts();
+    public @ResponseBody List<ProductM> getProductsM() {
+        try {
+            return productServicio.getProducts();
+        } catch (Exception e) {
+            throw e;
+        }
     }
-    
+
     @PostMapping
-    public ProductM crearProduct(@RequestBody ProductM unProduct){
-        return productServicio.instertarProduct(unProduct);
+    @JsonIgnore
+    public ProductM crearProduct(@RequestBody ProductM unProduct) {
+        try {
+            return productServicio.instertarProduct(unProduct);
+        } catch (Exception e) {
+            throw e;
+        }
     }
-    
+
     @DeleteMapping
-    public void eliminarProduct(@RequestBody ProductM unProduct){
-        productServicio.eliminarProduct(unProduct);
+    public void eliminarProduct(@RequestBody ProductM unProduct) {
+        try {
+            productServicio.eliminarProduct(unProduct);
+        } catch (Exception e) {
+            throw e;
+        }
     }
-    
+
     @PutMapping
-    public ProductM actualizarProduct(@RequestBody ProductM unProduct){
-        return productServicio.actualizarProduct(unProduct);
+    public ProductM actualizarProduct(@RequestBody ProductM unProduct) {
+        try {
+            return productServicio.actualizarProduct(unProduct);
+        } catch (Exception e) {
+            throw e;
+        }
     }
-    
+
 }

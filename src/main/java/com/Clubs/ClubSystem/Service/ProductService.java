@@ -21,19 +21,19 @@ public class ProductService {
     private ProductRepo productRepository;
     
     public ProductM instertarProduct(ProductM unProduct){
-        return productRepository.save(unProduct);
+            return productRepository.save(unProduct);
     }
     
     public ProductM actualizarProduct(ProductM unProduct){
-        return productRepository.save(unProduct);
+            return productRepository.save(unProduct);
     }
     
     public List<ProductM> getProducts(){
-        return productRepository.findAll();
+            return productRepository.findAll();
     }
     
     public void eliminarProduct(ProductM unProduct){
-        productRepository.delete(unProduct);
+            productRepository.delete(unProduct);
     }
     
 }

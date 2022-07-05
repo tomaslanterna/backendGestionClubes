@@ -10,4 +10,12 @@ package com.Clubs.ClubSystem.Logica;
  */
 public class ItemOrder {
     
+    private ProductM product;
+    private Integer cant;
+    
+    public ItemOrder(ProductM product,Integer cant){
+        this.product=product;
+        this.cant=cant;
+    }
+    
 }

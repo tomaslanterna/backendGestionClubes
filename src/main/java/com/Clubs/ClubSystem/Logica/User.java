@@ -19,12 +19,15 @@ import javax.persistence.Table;
 
 public abstract class User {
 
-    @ManyToOne
-    @JoinColumn(name = "Club_id", nullable = false)
-    protected Club clubId;
+    protected String nombre;
+    protected String password;
+    protected String email;
     
-    public User(Club club){
-        this.clubId=club;
+    
+    public User(String nombre,String password,String email){
+        this.nombre=nombre;
+        this.email=email;
+        this.password=password;
     }
 
 }

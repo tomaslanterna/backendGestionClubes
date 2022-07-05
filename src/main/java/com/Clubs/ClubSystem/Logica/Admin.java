@@ -11,6 +11,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -27,8 +29,13 @@ public class Admin extends User implements Serializable{
     protected Integer userId;
     @OneToMany(mappedBy="userId")
     private Set<Order> pedidosConfirmados= new HashSet<Order>();
+    @ManyToOne
+    @JoinColumn(name = "Club_id", nullable = false)
+    protected Club clubId;
     
-    public Admin(Integer userId,Club club){
-        super(club);
+    public Admin(Club club,String nombre,String password,String email){
+        super(nombre,password,email);
+        this.clubId=club;
     }
+    
 }

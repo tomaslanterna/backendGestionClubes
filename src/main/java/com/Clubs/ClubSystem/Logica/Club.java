@@ -4,6 +4,7 @@
  */
 package com.Clubs.ClubSystem.Logica;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
@@ -30,10 +31,16 @@ public class Club implements Serializable {
     @Column(unique=true)
     private String nombre;
     @OneToMany(mappedBy="clubId")
+    @JsonIgnore
     private Set<ProductM> stockProductM=new HashSet<ProductM>();
     private Date fechaCreacion; 
     @OneToMany(mappedBy="clubId")
-    private Set<User> partnersClub=new HashSet<User>();
+    @JsonIgnore
+    private Set<Partner> partnersClub=new HashSet<Partner>();
+    @OneToMany(mappedBy="clubId")
+    @JsonIgnore
+    private Set<Admin> adminsClub=new HashSet<Admin>();
+    
 
     public Club(String nombre) {
         this.nombre = nombre;

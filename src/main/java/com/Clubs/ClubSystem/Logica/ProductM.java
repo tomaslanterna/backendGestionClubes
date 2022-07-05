@@ -4,6 +4,9 @@
  */
 package com.Clubs.ClubSystem.Logica;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,6 +23,8 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="productsm")
+@JsonSerialize(include=JsonSerialize.Inclusion.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class ProductM implements Serializable {
     
     @Id
@@ -33,5 +38,39 @@ public class ProductM implements Serializable {
     @JoinColumn(name="Club_id",nullable=false)
     private Club clubId;
     
+    public ProductM(String nombre,Integer stock,String descripcion){
+        this.nombre=nombre;
+        this.stock=stock;
+        this.descripcion=descripcion;
+    }
     
+    public ProductM(){}
+
+    public Integer getProductId() {
+        return productId;
+    }
+
+    public void setProductId(Integer productId) {
+        this.productId = productId;
+    }
+    
+    public String getNombre() {
+        return nombre;
+    }
+
+    public Integer getStock() {
+        return stock;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public Club getClubId() {
+        return clubId;
+    }
+    
+    public void setClubId(Club clubId) {
+        this.clubId = clubId;
+    }
 }
